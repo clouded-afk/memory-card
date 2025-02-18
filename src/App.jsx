@@ -1,9 +1,15 @@
+import { useEffect, useState } from 'react'
+import { Header } from './components/Header'
+import { Footer } from './components/Footer'
 import './App.css'
 
-export function App() {
+function App() {
+
   return (
     <>
-
+      <Header />
+      <Footer />
     </>
   )
 }
+export default App
