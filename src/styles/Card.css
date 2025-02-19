@@ -1,0 +1,19 @@
+.memory-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    background-color: wheat;
+    width: 200px;
+    border-radius: 20px;
+}
+
+.card-image {
+    background-color: wheat;
+}
+
+.card-text {
+    background-color: wheat;
+    font-family: 'Courier New', Courier, monospace;
+    padding-bottom: 10px;
+}
