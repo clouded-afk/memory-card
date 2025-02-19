@@ -1,0 +1,27 @@
+.scoreboard-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: auto;
+    width: 80%;
+    height: 75px;
+}
+
+.current-score, .best-score {
+    width: 200px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: black;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.current-score {
+    color: yellow;
+    border: 2px solid yellow;
+}
+
+.best-score {
+    color: greenyellow;
+    border: 2px solid greenyellow;
+}
