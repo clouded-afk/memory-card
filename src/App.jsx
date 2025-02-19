@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { Header } from './components/Header'
 import { Scoreboard } from './components/Scoreboard'
 import { Gameboard } from './components/Gameboard'
-import { MemoryCard } from './components/Card'
 import { Footer } from './components/Footer'
 import './App.css'
 
@@ -32,7 +31,7 @@ function App() {
     <div className='main-container'>
       <Header />
       <Scoreboard />
-      <MemoryCard name={pokemonData.name} image={pokemonData.image}/>
+      <Gameboard name={pokemonData.name} image={pokemonData.image}/>
       <Footer />
     </div>
   )
