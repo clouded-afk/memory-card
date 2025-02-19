@@ -1,4 +1,7 @@
 .gameboard-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     width: 100%;
     border: 1px solid green;
 }
