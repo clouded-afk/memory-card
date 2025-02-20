@@ -6,8 +6,7 @@ import { Footer } from './components/Footer'
 import './App.css'
 
 function App() {
-  const [pokemonData, setPokemonData] = useState({})
-  const randomID = Math.floor(Math.random() * 1025) + 1
+  const [pokemonData, setPokemonData] = useState([])
   const POKEMON_URL = "https://pokeapi.co/api/v2/pokemon/"
 
   useEffect(() => {
@@ -19,19 +18,36 @@ function App() {
           name: data.name,
           image: data.sprites.front_default
         }
-        setPokemonData(extractedData)
+        return extractedData
       } catch (error) {
         console.error('Error fetching data', error)
       }
     }
-    getPokemonData(randomID)
+
+    async function fetchMultiplePokemonData() {
+      let pokemonArray = []
+      const pokemonIds = new Set()
+      while (pokemonIds.size < 25) {
+        pokemonIds.add(Math.floor(Math.random() * 1025) + 1)
+      }
+      for (const id of pokemonIds) {
+        const data = await getPokemonData(id)
+        if (data) {
+          pokemonArray.push(data)
+        }
+      }
+      console.log(pokemonArray)
+      setPokemonData(pokemonArray)
+    }
+
+    fetchMultiplePokemonData()
   }, [])  
 
   return (
     <div className='main-container'>
       <Header />
       <Scoreboard />
-      <Gameboard name={pokemonData.name} image={pokemonData.image}/>
+      <Gameboard pokemonArray={pokemonData}/>
       <Footer />
     </div>
   )
