@@ -9,45 +9,49 @@ function App() {
   const [pokemonData, setPokemonData] = useState([])
   const POKEMON_URL = "https://pokeapi.co/api/v2/pokemon/"
 
+  async function getPokemonData(pokemonID) {
+    try {
+      const response = await fetch(`${POKEMON_URL}${pokemonID}`)
+      const data = await response.json()
+      const extractedData = {
+        name: data.name,
+        image: data.sprites.front_default
+      }
+      return extractedData
+    } catch (error) {
+      console.error('Error fetching data', error)
+    }
+  }
+
+  async function fetchMultiplePokemonData() {
+    let pokemonArray = []
+    const pokemonIds = new Set()
+    while (pokemonIds.size < 25) {
+      pokemonIds.add(Math.floor(Math.random() * 151) + 1)
+    }
+    for (const id of pokemonIds) {
+      const data = await getPokemonData(id)
+      if (data) {
+        pokemonArray.push(data)
+      }
+    }
+    console.log(pokemonArray)
+    setPokemonData(pokemonArray)
+  }
+
   useEffect(() => {
-    async function getPokemonData(pokemonID) {
-      try {
-        const response = await fetch(`${POKEMON_URL}${pokemonID}`)
-        const data = await response.json()
-        const extractedData = {
-          name: data.name,
-          image: data.sprites.front_default
-        }
-        return extractedData
-      } catch (error) {
-        console.error('Error fetching data', error)
-      }
-    }
-
-    async function fetchMultiplePokemonData() {
-      let pokemonArray = []
-      const pokemonIds = new Set()
-      while (pokemonIds.size < 25) {
-        pokemonIds.add(Math.floor(Math.random() * 1025) + 1)
-      }
-      for (const id of pokemonIds) {
-        const data = await getPokemonData(id)
-        if (data) {
-          pokemonArray.push(data)
-        }
-      }
-      console.log(pokemonArray)
-      setPokemonData(pokemonArray)
-    }
-
     fetchMultiplePokemonData()
   }, [])  
+
+  const handleCardClick = async () => {
+    await fetchMultiplePokemonData()
+  }
 
   return (
     <div className='main-container'>
       <Header />
       <Scoreboard />
-      <Gameboard pokemonArray={pokemonData}/>
+      <Gameboard pokemonArray={pokemonData} handleCardClick={handleCardClick}/>
       <Footer />
     </div>
   )
