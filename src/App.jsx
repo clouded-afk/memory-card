@@ -7,6 +7,7 @@ import './App.css'
 
 function App() {
   const [pokemonData, setPokemonData] = useState([])
+  const [selectedPokemonData, setSelectedPokemonData] = useState([])
   const POKEMON_URL = "https://pokeapi.co/api/v2/pokemon/"
 
   async function getPokemonData(pokemonID) {
@@ -35,7 +36,6 @@ function App() {
         pokemonArray.push(data)
       }
     }
-    console.log(pokemonArray)
     setPokemonData(pokemonArray)
   }
 
@@ -43,9 +43,15 @@ function App() {
     fetchMultiplePokemonData()
   }, [])  
 
-  const handleCardClick = async () => {
-    await fetchMultiplePokemonData()
-  }
+  const handleCardClick = (pokemon) => {
+    setSelectedPokemonData(selectedPokemon => {
+      const selectedPokemonArray = [...selectedPokemon, pokemon]
+      console.log(selectedPokemonArray)
+      return selectedPokemonArray
+    })
+    fetchMultiplePokemonData();
+};
+
 
   return (
     <div className='main-container'>
