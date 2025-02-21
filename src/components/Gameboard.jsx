@@ -8,7 +8,7 @@ export function Gameboard({
     return (
         <div className="gameboard-container">
             {pokemonArray.map((pokemon, index) => (
-                <MemoryCard key={index} name={pokemon.name} image={pokemon.image} onClick={handleCardClick}/>
+                <MemoryCard key={index} name={pokemon.name} image={pokemon.image} handleCardClick={handleCardClick}/>
             ))}
         </div>
     )
