@@ -51,6 +51,7 @@ function App() {
     if (selectedPokemonData.includes(pokemon)) {
       setCurrentScore(0)
       setSelectedPokemonData([])
+      fetchMultiplePokemonData()
     } else {
       setCurrentPokemon(pokemon)
       setSelectedPokemonData(selectedPokemon => {
@@ -60,7 +61,6 @@ function App() {
       })
       handleScore()
     }
-    fetchMultiplePokemonData()
   } 
 
   const handleScore = () => {
