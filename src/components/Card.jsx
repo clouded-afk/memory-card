@@ -6,7 +6,7 @@ export function MemoryCard({
     onClick
 }) {
     return (
-        <div className="memory-card" onClick={onClick}>
+        <div className="memory-card" onClick={() => onClick(name)}>
             <img className="card-image" src={image} alt={name}/>
             <div className="card-text">{name}</div>
         </div>
