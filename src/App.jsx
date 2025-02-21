@@ -8,6 +8,8 @@ import './App.css'
 function App() {
   const [pokemonData, setPokemonData] = useState([])
   const [selectedPokemonData, setSelectedPokemonData] = useState([])
+  const [currentScore, setCurrentScore] = useState(0)
+  const [bestScore, setBestScore] = useState(0)
   const POKEMON_URL = "https://pokeapi.co/api/v2/pokemon/"
 
   async function getPokemonData(pokemonID) {
@@ -49,14 +51,21 @@ function App() {
       console.log(selectedPokemonArray)
       return selectedPokemonArray
     })
+    handleScore()
     fetchMultiplePokemonData();
-};
+  };
 
+  const handleScore = () => {
+    setCurrentScore(currentScore + 1)
+    if (currentScore >= bestScore) {
+      setBestScore(currentScore + 1)
+    }
+  }
 
   return (
     <div className='main-container'>
       <Header />
-      <Scoreboard />
+      <Scoreboard currentScore={currentScore} bestScore={bestScore}/>
       <Gameboard pokemonArray={pokemonData} handleCardClick={handleCardClick}/>
       <Footer />
     </div>
