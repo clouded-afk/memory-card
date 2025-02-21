@@ -8,6 +8,7 @@ import './App.css'
 function App() {
   const [pokemonData, setPokemonData] = useState([])
   const [selectedPokemonData, setSelectedPokemonData] = useState([])
+  const [currentPokemon, setCurrentPokemon] = useState('')
   const [currentScore, setCurrentScore] = useState(0)
   const [bestScore, setBestScore] = useState(0)
   const POKEMON_URL = "https://pokeapi.co/api/v2/pokemon/"
@@ -43,17 +44,24 @@ function App() {
 
   useEffect(() => {
     fetchMultiplePokemonData()
-  }, [])  
+    console.log(currentPokemon)
+  }, [currentPokemon])
 
   const handleCardClick = (pokemon) => {
-    setSelectedPokemonData(selectedPokemon => {
-      const selectedPokemonArray = [...selectedPokemon, pokemon]
-      console.log(selectedPokemonArray)
-      return selectedPokemonArray
-    })
-    handleScore()
-    fetchMultiplePokemonData();
-  };
+    if (selectedPokemonData.includes(pokemon)) {
+      setCurrentScore(0)
+      setSelectedPokemonData([])
+    } else {
+      setCurrentPokemon(pokemon)
+      setSelectedPokemonData(selectedPokemon => {
+        const selectedPokemonArray = [...selectedPokemon, pokemon]
+        console.log(selectedPokemonArray)
+        return selectedPokemonArray
+      })
+      handleScore()
+    }
+    fetchMultiplePokemonData()
+  } 
 
   const handleScore = () => {
     setCurrentScore(currentScore + 1)
