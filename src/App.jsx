@@ -54,9 +54,6 @@ function App() {
     if (selectedPokemonData.includes(pokemon)) {
       setPreviousScore(currentScore)
       resultsDisplay.style.display = "flex"
-      setCurrentScore(0)
-      setSelectedPokemonData([])
-      fetchMultiplePokemonData()
     } else {
       setCurrentPokemon(pokemon)
       setSelectedPokemonData(selectedPokemon => {
@@ -78,6 +75,9 @@ function App() {
   const handlePlayAgain = () => {
     const resultsDisplay = document.querySelector(".content-blocker")
     resultsDisplay.style.display = "none"
+    setCurrentScore(0)
+    setSelectedPokemonData([])
+    fetchMultiplePokemonData()
   }
 
   return (
