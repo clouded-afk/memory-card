@@ -10,6 +10,7 @@ function App() {
   const [pokemonData, setPokemonData] = useState([])
   const [selectedPokemonData, setSelectedPokemonData] = useState([])
   const [currentPokemon, setCurrentPokemon] = useState('')
+  const [previousScore, setPreviousScore] = useState('')
   const [currentScore, setCurrentScore] = useState(0)
   const [bestScore, setBestScore] = useState(0)
   const POKEMON_URL = "https://pokeapi.co/api/v2/pokemon/"
@@ -49,7 +50,10 @@ function App() {
   }, [currentPokemon])
 
   const handleCardClick = (pokemon) => {
+    const resultsDisplay = document.querySelector(".content-blocker")
     if (selectedPokemonData.includes(pokemon)) {
+      setPreviousScore(currentScore)
+      resultsDisplay.style.display = "flex"
       setCurrentScore(0)
       setSelectedPokemonData([])
       fetchMultiplePokemonData()
@@ -71,13 +75,18 @@ function App() {
     }
   }
 
+  const handlePlayAgain = () => {
+    const resultsDisplay = document.querySelector(".content-blocker")
+    resultsDisplay.style.display = "none"
+  }
+
   return (
     <div className='main-container'>
       <Header />
       <Scoreboard currentScore={currentScore} bestScore={bestScore}/>
       <Gameboard pokemonArray={pokemonData} handleCardClick={handleCardClick}/>
       <Footer />
-      <ResultDisplay score={currentScore}/>
+      <ResultDisplay score={previousScore} handlePlayAgain={handlePlayAgain}/>
     </div>
   )
 }
