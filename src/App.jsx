@@ -46,7 +46,6 @@ function App() {
 
   useEffect(() => {
     fetchMultiplePokemonData()
-    console.log(currentPokemon)
   }, [currentPokemon])
 
   const handleCardClick = (pokemon) => {
@@ -58,7 +57,6 @@ function App() {
       setCurrentPokemon(pokemon)
       setSelectedPokemonData(selectedPokemon => {
         const selectedPokemonArray = [...selectedPokemon, pokemon]
-        console.log(selectedPokemonArray)
         return selectedPokemonArray
       })
       handleScore()
