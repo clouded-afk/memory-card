@@ -3,6 +3,7 @@ import { Header } from './components/Header'
 import { Scoreboard } from './components/Scoreboard'
 import { Gameboard } from './components/Gameboard'
 import { Footer } from './components/Footer'
+import { ResultDisplay } from './components/ResultDisplay'
 import './App.css'
 
 function App() {
@@ -76,6 +77,7 @@ function App() {
       <Scoreboard currentScore={currentScore} bestScore={bestScore}/>
       <Gameboard pokemonArray={pokemonData} handleCardClick={handleCardClick}/>
       <Footer />
+      <ResultDisplay score={currentScore}/>
     </div>
   )
 }
