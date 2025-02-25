@@ -6,4 +6,23 @@
     box-shadow: 1px 1px 1px 1px #d6d3d1;
     margin-bottom: 20px;
     padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
 }
+
+.page-header {
+    margin-left: 10px;
+}
+
+.rules-container {
+    margin-right: 10px;
+}
+
+.line-divider {
+    border: 1px solid black;
+}
+
+ul {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
