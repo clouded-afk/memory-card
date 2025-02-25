@@ -41,6 +41,10 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
     }
+
+    .content-blocker {
+        position: fixed;
+    }
 }
 
 @media (max-width: 600px) {
@@ -57,5 +61,13 @@
     .gameboard-container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .content-blocker {
+        position: fixed;
+    }
+
+    .result-container {
+        width: 400px;
     }
 }
