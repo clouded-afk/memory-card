@@ -32,7 +32,7 @@ function App() {
   async function fetchMultiplePokemonData() {
     let pokemonArray = []
     const pokemonIds = new Set()
-    while (pokemonIds.size < 25) {
+    while (pokemonIds.size < 24) {
       pokemonIds.add(Math.floor(Math.random() * 151) + 1)
     }
     for (const id of pokemonIds) {
