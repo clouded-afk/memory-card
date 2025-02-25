@@ -25,3 +25,20 @@
         max-width: 60%;
     }
 }
+
+@media (max-width: 600px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .page-header, .rules-container {
+        margin-bottom: 10px;
+    }
+
+    .gameboard-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
