@@ -8,3 +8,13 @@
     flex-direction: column;
     min-height: 100vh;
 }
+
+@media (min-width: 1600px) {
+    .header {
+        justify-content: space-around;
+    }
+
+    .gameboard-container {
+        max-width: 60%;
+    }
+}
